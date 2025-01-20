@@ -64,6 +64,17 @@ This library provides utility classes to easily style your HTML elements using p
 - `border-b-2`: Sets bottom border to 2px.
 - `border-l-2`: Sets left border to 2px.
 
+### Border Color
+- `border-red-{value}`: Sets border color to red.
+- `border-green-{value}`: Sets border color to green.
+- `border-blue-{value}`: Sets border color to blue.
+- `border-yellow-{value}`: Sets border color to yellow.
+- `border-purple-{value}`: Sets border color to purple.
+- `border-pink-{value}`: Sets border color to pink.
+- `border-gray-{value}`: Sets border color to gray.
+- `border-black`: Sets border color to black.
+- `border-white`: Sets border color to white.
+
 ### Font Size
 - `text-{value}`: Sets font size.
 - `text-xs`: Sets font size to 0.75rem.

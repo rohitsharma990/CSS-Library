@@ -1,12 +1,14 @@
 const flexifyContainer = document.body;
 
 const handleClass = (element, cls) => {
+
+     
     const [prefix, value] = cls.split('-');
 
     // background-color
     if (prefix === 'bg') {
-        element.style.setProperty('background-color', value);
-    }
+            element.style.setProperty('background-color', value);
+        }
     // color
     if (prefix === 'text') {
         element.style.setProperty('color', value);
@@ -64,19 +66,16 @@ const handleClass = (element, cls) => {
         }
     }
     //Width
-    {
-        if (prefix === 'w') {
-            element.style.setProperty('width', `${value}px`);
-        }
-        if (prefix === 'w-full') {
-            element.style.setProperty('width', '100%');
-        }
-        if (prefix === 'w-screen') {
-            element.style.setProperty('width', '100vw');
-        }
-        if (prefix === 'w-fit') {
-            element.style.setProperty('width', 'fit-content');
-        }
+    if (prefix === 'w') {
+        element.style.setProperty('width', `${value}px`);
+    } else if (prefix === 'w-full') {
+        element.style.setProperty('width', '100%');
+    } else if (prefix === 'w-screen') {
+        element.style.setProperty('width', '100vw');
+    } else if (prefix === 'w-fit') {
+        element.style.setProperty('width', 'fit-content');
+    } else {
+        console.warn(`Unknown width prefix: ${prefix}`);
     }
     //height
     {
@@ -120,7 +119,7 @@ const handleClass = (element, cls) => {
             element.style.setProperty('border-radius', '0px');
         }
     }
-    //Border
+    // Border
     {
         if (prefix === 'border') {
             element.style.setProperty('border', `${value}px solid`);
@@ -138,16 +137,16 @@ const handleClass = (element, cls) => {
             element.style.setProperty('border-right', `${value}px solid`);
         }
         if (prefix === 'border-t-0') {
-            element.style.setProperty('border-top', '0px solid');
+            element.style.setProperty('border-top', '0');
         }
         if (prefix === 'border-b-0') {
-            element.style.setProperty('border-bottom', '0px solid');
+            element.style.setProperty('border-bottom', '0');
         }
         if (prefix === 'border-l-0') {
-            element.style.setProperty('border-left', '0px solid');
+            element.style.setProperty('border-left', '0');
         }
         if (prefix === 'border-r-0') {
-            element.style.setProperty('border-right', '0px solid');
+            element.style.setProperty('border-right', '0');
         }
         if (prefix === 'border-t-2') {
             element.style.setProperty('border-top', '2px solid');
@@ -157,6 +156,57 @@ const handleClass = (element, cls) => {
         }
         if (prefix === 'border-l-2') {
             element.style.setProperty('border-left', '2px solid');
+        }
+        if (prefix === 'border-r-2') {
+            element.style.setProperty('border-right', '2px solid');
+        }
+    }
+    // Border Style
+    {
+        if (prefix === 'border-solid') {
+            element.style.setProperty('border-style', 'solid');
+        }
+        if (prefix === 'border-dashed') {
+            element.style.setProperty('border-style', 'dashed');
+        }
+        if (prefix === 'border-dotted') {
+            element.style.setProperty('border-style', 'dotted');
+        }
+        if (prefix === 'border-double') {
+            element.style.setProperty('border-style', 'double');
+        }
+        if (prefix === 'border-none') {
+            element.style.setProperty('border-style', 'none');
+        }
+    }
+    // Border Color
+    {
+        if (prefix.startsWith('border-red')) {
+            element.style.setProperty('border-color', 'red');
+        }
+        if (prefix.startsWith('border-green')) {
+            element.style.setProperty('border-color', 'green');
+        }
+        if (prefix.startsWith('border-blue')) {
+            element.style.setProperty('border-color', 'blue');
+        }
+        if (prefix.startsWith('border-yellow')) {
+            element.style.setProperty('border-color', 'yellow');
+        }
+        if (prefix.startsWith('border-purple')) {
+            element.style.setProperty('border-color', 'purple');
+        }
+        if (prefix.startsWith('border-pink')) {
+            element.style.setProperty('border-color', 'pink');
+        }
+        if (prefix.startsWith('border-gray')) {
+            element.style.setProperty('border-color', 'gray');
+        }
+        if (prefix.startsWith('border-black')) {
+            element.style.setProperty('border-color', 'black');
+        }
+        if (prefix.startsWith('border-white')) {
+            element.style.setProperty('border-color', 'white');
         }
     }
     //font-size
@@ -240,7 +290,6 @@ const handleClass = (element, cls) => {
             element.style.setProperty('display', 'grid');
         }
     }
-
     // justify-content
     {
         if (prefix === 'justify-normal') {
@@ -268,7 +317,6 @@ const handleClass = (element, cls) => {
             element.style.setProperty('justify-content', 'stretch');
         }
     }
-
     // align-items
     {
         if (prefix === 'items-start') {
@@ -287,7 +335,6 @@ const handleClass = (element, cls) => {
             element.style.setProperty('align-items', 'stretch');
         }
     }
-
     //gap
     {
         if (prefix === 'gap') {
@@ -300,8 +347,88 @@ const handleClass = (element, cls) => {
             element.style.setProperty('row-gap', `${value}px`);
         }
     }
+    //Flex Direction
+    {
+        if (prefix === 'flex-row') {
+            element.style.setProperty('flex-direction', 'row');
+        }
+        if (prefix === 'flex-row-reverse') {
+            element.style.setProperty('flex-direction', 'row-reverse');
+        }
+        if (prefix === 'flex-col') {
+            element.style.setProperty('flex-direction', 'column');
+        }
+        if (prefix === 'flex-col-reverse') {
+            element.style.setProperty('flex-direction', 'column-reverse');
+        }
+    }
+    //Flex Direction
+    {
+        if (prefix === 'flex-row') {
+            element.style.setProperty('flex-direction', 'row');
+        }
+        if (prefix === 'flex-row-reverse') {
+            element.style.setProperty('flex-direction', 'row-reverse');
+        }
+        if (prefix === 'flex-col') {
+            element.style.setProperty('flex-direction', 'column');
+        }
+        if (prefix === 'flex-col-reverse') {
+            element.style.setProperty('flex-direction', 'column-reverse');
+        }
+    }
+    // opacity
+    {
+        if (prefix === 'opacity') {
+            element.style.setProperty('opacity', value / 100);
+        }
+        if (prefix === 'opacity-0') {
+            element.style.setProperty('opacity', '0');
+        }
+        if (prefix === 'opacity-5') {
+            element.style.setProperty('opacity', '0.05');
+        }
+        if (prefix === 'opacity-10') {
+            element.style.setProperty('opacity', '0.1');
+        }
+        if (prefix === 'opacity-20') {
+            element.style.setProperty('opacity', '0.2');
+        }
+        if (prefix === 'opacity-25') {
+            element.style.setProperty('opacity', '0.25');
+        }
+        if (prefix === 'opacity-30') {
+            element.style.setProperty('opacity', '0.3');
+        }
+        if (prefix === 'opacity-40') {
+            element.style.setProperty('opacity', '0.4');
+        }
+        if (prefix === 'opacity-50') {
+            element.style.setProperty('opacity', '0.5');
+        }
+        if (prefix === 'opacity-60') {
+            element.style.setProperty('opacity', '0.6');
+        }
+        if (prefix === 'opacity-70') {
+            element.style.setProperty('opacity', '0.7');
+        }
+        if (prefix === 'opacity-75') {
+            element.style.setProperty('opacity', '0.75');
+        }
+        if (prefix === 'opacity-80') {
+            element.style.setProperty('opacity', '0.8');
+        }
+        if (prefix === 'opacity-90') {
+            element.style.setProperty('opacity', '0.9');
+        }
+        if (prefix === 'opacity-95') {
+            element.style.setProperty('opacity', '0.95');
+        }
+        if (prefix === 'opacity-100') {
+            element.style.setProperty('opacity', '1');
+        }
 
-
+    }
 }
 
 
@@ -309,14 +436,96 @@ const handleClass = (element, cls) => {
 const handleElement = (element) => {
     const classes = element.className.split(' ');
     for (const cls of classes) {
+
+
+{
+        let bgvalue;
+        if (cls && cls.startsWith('bg-[') && cls.endsWith(']')) {
+            bgvalue = cls.slice(4, -1); 
+        } else {
+            bgvalue = cls;
+        }
+       let bgelem = bgvalue.length === 7
+        const extractedValue = bgvalue.substring(0, 3);
+                       
         //background-color
         if (cls.startsWith('bg-')) {
             handleClass(element, cls);
         }
+        if (bgelem === true) {
+          element.style.setProperty('background-color', bgvalue);
+        }
+
+        if (extractedValue === 'url') {
+            element.style.setProperty('background-image', bgvalue);
+            element.style.setProperty('background-size', 'cover');
+        }
+    }
+
 
         // color
         if (cls.startsWith('text-')) {
             handleClass(element, cls);
+        }
+        //font-size
+        {
+            if (cls.startsWith('text-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-xs')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-sm')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-base')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-lg')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-xl')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-2xl')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-3xl')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-4xl')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-5xl')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('text-6xl')) {
+                handleClass(element, cls);
+            }
+        }
+        //font-weight
+        {
+            if (cls.startsWith('font-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('font-bold')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('font-normal')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('font-light')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('font-thin')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('font-extrabold')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('font-black')) {
+                handleClass(element, cls);
+            }
         }
         // padding
         {
@@ -397,7 +606,6 @@ const handleElement = (element) => {
                 handleClass(element, cls);
             }
         }
-
         //Border Radius
         {
             if (cls.startsWith('rounded-')) {
@@ -463,70 +671,55 @@ const handleElement = (element) => {
             if (cls.startsWith('border-l-2')) {
                 handleClass(element, cls);
             }
-        }
-         //Border color
-         {
-            
-         }
-
-        //font-size
-        {
-            if (cls.startsWith('text-')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-xs')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-sm')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-base')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-lg')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-xl')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-2xl')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-3xl')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-4xl')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-5xl')) {
-                handleClass(element, cls);
-            }
-            if (cls.startsWith('text-6xl')) {
+            if (cls.startsWith('border-r-2')) {
                 handleClass(element, cls);
             }
         }
-
-        //font-weight
+        // Border Style
         {
-            if (cls.startsWith('font-')) {
+            if (cls.startsWith('border-solid')) {
                 handleClass(element, cls);
             }
-            if (cls.startsWith('font-bold')) {
+            if (cls.startsWith('border-dashed')) {
                 handleClass(element, cls);
             }
-            if (cls.startsWith('font-normal')) {
+            if (cls.startsWith('border-dotted')) {
                 handleClass(element, cls);
             }
-            if (cls.startsWith('font-light')) {
+            if (cls.startsWith('border-double')) {
                 handleClass(element, cls);
             }
-            if (cls.startsWith('font-thin')) {
+            if (cls.startsWith('border-none')) {
                 handleClass(element, cls);
             }
-            if (cls.startsWith('font-extrabold')) {
+        }
+        // Border Color
+        {
+            if (cls.startsWith('border-red-')) {
                 handleClass(element, cls);
             }
-            if (cls.startsWith('font-black')) {
+            if (cls.startsWith('border-green-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-blue-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-yellow-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-purple-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-pink-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-gray-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-black')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('border-white')) {
                 handleClass(element, cls);
             }
         }
@@ -582,7 +775,7 @@ const handleElement = (element) => {
             }
 
         }
-       // align-items
+        // align-items
         {
             if (cls.startsWith('items-start')) {
                 handleClass(element, cls);
@@ -600,23 +793,84 @@ const handleElement = (element) => {
                 handleClass(element, cls);
             }
 
+        }
+        //gap
+        {
+            if (cls.startsWith('gap-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('gap-x-')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('gap-y-')) {
+                handleClass(element, cls);
+            }
+        }
+        //Flex Direction
+        {
+            if (cls.startsWith('flex-row')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('flex-row-reverse')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('flex-col')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('flex-col-reverse')) {
+                handleClass(element, cls);
+            }
+        }
+        // opacity
+        {
+            if (cls.startsWith('opacity-0')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-5')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-10')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-20')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-25')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-30')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-40')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-50')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-60')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-70')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-75')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-80')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-90')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-95')) {
+                handleClass(element, cls);
+            }
+            if (cls.startsWith('opacity-100')) {
+                handleClass(element, cls);
+            }
+        }
+        
     }
-    //gap
-    {
-        if (cls.startsWith('gap-')) {
-            handleClass(element, cls);
-        }
-        if (cls.startsWith('gap-x-')) {
-            handleClass(element, cls);
-        }
-        if (cls.startsWith('gap-y-')) {
-            handleClass(element, cls);
-        }
-    }
-     
-
-
-}
 }
 
 const handleElements = () => {
